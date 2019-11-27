@@ -1,0 +1,42 @@
+#application target for execute
+calc: ui.o infixtopostfix.o codegen.o interpreter.o
+	ui.o
+	infixtopostfix.o
+	codegen.o
+	interpreter.o
+
+
+#object file targets for testing:
+ui.o:	ui.c
+	gcc -o ui.o ui.c
+
+tokenizer.o: tokenizer.c
+	gcc -o tokenizer.o tokenizer.c
+
+infixtopostfix.o: 	tokenizer.c infixtopostfix.c 
+	gcc -o infixtopostfix.o infixtopostfix.c tokenizer.c
+
+codegen.o: 			tokenizer.c codegen.c
+	gcc -o codegen.o codegen.c tokenizer.c
+
+interpreter.o:		tokenizer.c interpreter.c 
+	gcc -o interpreter.o interpreter.c tokenizer.c
+
+
+test:
+	gcc -o tokenizer_test.t tokenizer_test.c
+	prove -v ./tokenizer_test.t
+
+	gcc -o infixtopostfix_test.t infixtopostfix_test.c
+	prove -v ./infixtopostfix_test.t
+
+	gcc -o codegen_test.t codegen_test.c
+	prove -v ./codegen_test.t
+
+
+# clean target
+clean:
+	rm *.o calc code.txt
+	
+
+
