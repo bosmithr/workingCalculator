@@ -19,37 +19,37 @@ void interpret()
        char item = readchar(fp);
        if(item=='L')
         {
-            fscanf(fp,"%s %f\n",&s,&array[j]);
+            fscanf(fp,"%s %f\n",s,&array[j]);
             j++;
         }
        if(item=='M')
         { 
-            fscanf(fp,"%s\n",&s);
+            fscanf(fp,"%s\n",s);
             array[j-2]=array[j-2]*array[j-1];j--;
         }
         if(item=='A')
         {
-            fscanf(fp,"%s\n",&s);
+            fscanf(fp,"%s\n",s);
             array[j-2]=array[j-2]+array[j-1];j--;
         }
         if(item=='D')
         {
-            fscanf(fp,"%s\n",&s);
+            fscanf(fp,"%s\n",s);
             array[j-2]=array[j-2]/array[j-1];j--;
         }
         if(item=='E')
         {
-            fscanf(fp,"%s\n",&s);
+            fscanf(fp,"%s\n",s);
             array[j-2]=pow(array[j-2],array[j-1]);j--;
         }
         if(item=='m')
         {
-            fscanf(fp,"%s\n",&s);
+            fscanf(fp,"%s\n",s);
             array[j-2]=(array[j-2]-array[j-1]*((int)array[j-2] / (int)array[j-1])); j--;
         }
         if(item=='S')
         {
-            fscanf(fp,"%s\n",&s);
+            fscanf(fp,"%s\n",s);
             array[j-2]=array[j-2]-array[j-1];j--;
         }
     }
